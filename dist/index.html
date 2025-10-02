@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOORUL PRINTERS</title>
+<style>
+/* ---------- Base ---------- */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif;}
+html{scroll-behavior:smooth;}
+body{line-height:1.5;background:#fbfbfc;color:#222;}
+
+/* ---------- Header ---------- */
+header{background:#111;color:#fff;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 3px 10px rgba(0,0,0,0.3);}
+header h1{font-size:20px;letter-spacing:0.6px;display:flex;flex-direction:column;align-items:flex-start;}
+header h1 span{font-size:12px;font-weight:400;color:#6ee7b7;margin-top:3px;}
+nav a{color:#e6eef3;margin-left:18px;text-decoration:none;font-weight:600;}
+nav a:hover{color:#6ee7b7;}
+
+/* ---------- Hero ---------- */
+#home{height:72vh;background:linear-gradient(180deg,rgba(3,7,18,.55),rgba(3,7,18,.55)),url('https://source.unsplash.com/1600x900/?printing,press') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:48px;}
+#home h2{font-size:44px;margin-bottom:12px;text-shadow:0 6px 20px rgba(2,6,23,.6);}
+#home p{font-size:18px;margin-bottom:22px;opacity:.95;}
+
+/* ---------- Sections ---------- */
+section{padding:64px 28px;}
+#about{background:#f7fafc;border-top:1px solid #e6eef3;}
+#services{background:#fff;}
+#contact{background:#f7f9fb;}
+
+/* ---------- Services ---------- */
+.services{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
+.service-card{flex:1 1 260px;background:#fff;padding:22px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,.06);transition:transform .22s,box-shadow .22s;}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 14px 40px rgba(2,6,23,.09);}
+.service-card h3{margin-bottom:8px;}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-block;background:#00bcd4;color:#042b2d;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;transition:all .3s;}
+.btn:hover{transform:translateY(-3px);filter:brightness(.96);}
+
+/* ---------- Contact ---------- */
+.contact-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;}
+.info {padding:18px 20px;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,.04);}
+.info p{margin-bottom:8px;}
+.map-container{border-radius:10px;overflow:hidden;margin-top:12px;box-shadow:0 8px 24px rgba(2,6,23,.06);}
+iframe{width:100%;height:260px;border:0;display:block;}
+
+/* ---------- Gallery ---------- */
+.gallery-wrap{background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(2,6,23,.04);}
+.gallery-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.gallery-item{position:relative;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#f3f6f8,#fff);display:flex;align-items:center;justify-content:center;min-height:110px;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.item-controls{position:absolute;top:8px;right:8px;display:flex;gap:6px;}
+.icon-btn{background:rgba(0,0,0,.45);color:#fff;padding:6px;border-radius:8px;border:none;cursor:pointer;}
+.icon-btn:hover{background:rgba(0,0,0,.6);}
+
+/* ✅ Plus tile fully clickable */
+.plus-tile{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  font-weight:800;
+  color:#0f1724;
+  background:linear-gradient(180deg,#e6fffa,#ddf7f2);
+  border:3px dashed rgba(2,6,23,.06);
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+.plus-tile:hover{
+  transform:scale(1.08);
+  background:#c6f7e2;
+  border-color:#00bcd4;
+}
+
+/* ---------- Modals ---------- */
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.45);display:flex;align-items:center;justify-content:center;z-index:200;}
+.modal{width:clamp(320px,86vw,660px);background:#fff;border-radius:12px;padding:18px;box-shadow:0 20px 60px rgba(2,6,23,.45);}
+.modal h4{margin-bottom:12px;}
+.modal .row{margin-bottom:12px;}
+.modal input[type="text"],.modal input[type="password"],.modal input[type="url"],.modal textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #dbe7ea;}
+.modal .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;}
+.muted{color:#556;font-size:13px;}
+
+/* ---------- Floating WhatsApp ---------- */
+#whatsappBtn{position:fixed;bottom:22px;right:22px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:999;transition:transform .2s;}
+#whatsappBtn:hover{transform:scale(1.1);}
+
+/* ---------- Responsive ---------- */
+@media(max-width:980px){.contact-wrap{grid-template-columns:1fr}#home{height:52vh;padding:28px}#home h2{font-size:28px}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>
+    NOORUL PRINTERS
+    <span>We create your imagination</span>
+  </h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home">
+  <h2>Welcome to NOORUL PRINTERS</h2>
+  <p>High-quality printing solutions for cards, books, posters, banners & more.</p>
+  <a class="btn" href="#services">Our Services</a>
+</section>
+
+<section id="about">
+  <div style="max-width:900px;margin:0 auto;text-align:left">
+    <h2>About Us</h2>
+    <p>At NOORUL PRINTERS, we provide modern printing technology and attention to detail. Services include design, offset & digital printing, and custom large-format prints.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div style="max-width:1100px;margin:0 auto">
+    <h2 style="margin-bottom:18px">Our Services</h2>
+    <div class="services">
+      <div class="service-card"><h3>All Kind of Printing</h3><p>From small to large-scale printing needs.</p></div>
+      <div class="service-card"><h3>Business Cards</h3><p>Professional and creative visiting cards.</p></div>
+      <div class="service-card"><h3>Wedding Cards</h3><p>Elegant wedding invitations with custom designs.</p></div>
+      <div class="service-card"><h3>Bill Book Printing</h3><p>High-quality bill books for businesses.</p></div>
+      <div class="service-card"><h3>Flex Printing</h3><p>Large format flex for banners & hoardings.</p></div>
+      <div class="service-card"><h3>Cash Memo Printing</h3><p>Custom printed memos and receipts.</p></div>
+      <div class="service-card"><h3>Poster Printing</h3><p>Eye-catching posters in various sizes.</p></div>
+      <div class="service-card"><h3>Custom Designs</h3><p>Bring your imagination to life with unique designs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2>Contact & Gallery</h2>
+    <div class="contact-wrap" style="margin-top:16px">
+      <!-- left: gallery -->
+      <div>
+        <div class="gallery-wrap">
+          <div class="gallery-top">
+            <div><strong>Gallery</strong><div class="muted" style="font-size:13px">Click the <strong>+</strong> tile to add images (password required)</div></div>
+          </div>
+          <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- right: contact info & map -->
+      <div>
+        <div class="info">
+          <p><strong>Mobile:</strong> <a href="tel:+919956464545">9956464545</a></p>
+          <p><strong>Email:</strong> <a href="mailto:firoz.grafart@gmail.com">firoz.grafart@gmail.com</a></p>
+          <p><strong>Address:</strong> Mission Road, Animal Hospital, Rasra, District Ballia (UP)</p>
+
+          <div style="margin-top:12px">
+            <form onsubmit="sendToWhatsApp(event)">
+              <label style="font-weight:700;font-size:13px">Send Quick Message on WhatsApp</label>
+              <textarea id="wa_msg" placeholder="Type message..." rows="3" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e0eef0"></textarea>
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <button class="btn" type="button" onclick="sendToWhatsAppDirect()">Open WhatsApp</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps?q=Mission+Road+Animal+Hospital+Rasra+Ballia+UP&output=embed" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:22px;background:#0f1724;color:#dbeaf0"><small>&copy; 2025 NOORUL PRINTERS. All rights reserved.</small></footer>
+
+<!-- Floating WhatsApp -->
+<div id="whatsappBtn" title="Chat on WhatsApp">💬</div>
+
+<!-- Modal root -->
+<div id="modalRoot" aria-hidden="true"></div>
+
+<!-- Gallery template -->
+<template id="galleryItemTpl">
+  <div class="gallery-item">
+    <img alt="Gallery image">
+    <div class="item-controls">
+      <button class="icon-btn" data-action="download" title="Open image in new tab">⤓</button>
+      <button class="icon-btn" data-action="delete" title="Delete">✕</button>
+    </div>
+  </div>
+</template>
+
+<script>
+const MASTER_PASSWORD="AqibAnsari@4578";
+const STORAGE_KEY="noorul_printers_gallery_v1";
+const modalRoot=document.getElementById('modalRoot');
+const galleryGrid=document.getElementById('galleryGrid');
+const galleryTpl=document.getElementById('galleryItemTpl');
+
+function openModal(html){const backdrop=document.createElement('div');backdrop.className='modal-backdrop';backdrop.innerHTML=`<div class="modal">${html}</div>`;backdrop.addEventListener('click',e=>{if(e.target===backdrop)backdrop.remove()});modalRoot.appendChild(backdrop);modalRoot.setAttribute('aria-hidden','false');return backdrop;}
+function closeModal(backdrop){if(backdrop&&backdrop.remove)backdrop.remove();modalRoot.setAttribute('aria-hidden','true');}
+function loadGallery(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||[];}catch(e){return[];}}
+function saveGallery(list){localStorage.setItem(STORAGE_KEY,JSON.stringify(list));}
+function pushImage(obj){const arr=loadGallery();arr.unshift(obj);saveGallery(arr);}
+async function readFileAsDataURL(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.onerror=e=>rej(e);r.readAsDataURL(file);});}
+
+function renderGallery(){
+  const items=loadGallery();
+  galleryGrid.innerHTML='';
+  
+  // ✅ plus tile clickable
+  const plus=document.createElement('div');
+  plus.className='gallery-item plus-tile';
+  plus.innerHTML='+';
+  plus.title='Add image (password required)';
+  plus.addEventListener('click',showPasswordPrompt);
+  galleryGrid.appendChild(plus);
+
+  items.forEach((it,idx)=>{
+    const node=galleryTpl.content.firstElementChild.cloneNode(true);
+    const img=node.querySelector('img');
+    img.src=it.src;img.alt=it.name||'Image';
+    img.addEventListener('click',()=>window.open(it.src,'_blank'));
+    node.querySelector('[data-action="delete"]').addEventListener('click',()=>{
+      if(confirm('Delete this image?')){
+        const arr=loadGallery();arr.splice(idx,1);saveGallery(arr);renderGallery();
+      }
+    });
+    node.querySelector('[data-action="download"]').addEventListener('click',()=>window.open(it.src,'_blank'));
+    galleryGrid.appendChild(node);
+  });
+}
+
+function showPasswordPrompt(){
+  const backdrop=openModal(`<h4>Enter password to add images</h4><div class="row"><input id="pw_input" type="password" placeholder="Password" /></div><div class="actions"><button id="pw_cancel" class="icon-btn" style="background:rgba(0,0,0,.08);color:#111">Cancel</button><button id="pw_ok" class="btn">Unlock</button></div>`);
+  backdrop.querySelector('#pw_cancel').addEventListener('click',()=>closeModal(backdrop));
+  backdrop.querySelector('#pw_ok').addEventListener('click',()=>{
+    const val=backdrop.querySelector('#pw_input').value||'';
+    if(val===MASTER_PASSWORD){closeModal(backdrop);openUploadModal();}
+    else alert('Incorrect password');
+  });
+}
+
+function openUploadModal(){
+  const backdrop=openModal(`<h4>Add Image to Gallery</h4>
+    <div class="row"><label>Select image from device</label><input id="file_input" type="file" accept="image/*" /></div>
+    <div style="margin:8px 0" class="muted">OR</div>
+    <div class="row"><label>Paste image URL</label><input id="url_input" type="url" placeholder="https://example.com/photo.jpg" /></div>
+    <div class="row"><label>Image name (optional)</label><input id="img_name" type="text" placeholder="Banner photo" /></div>
+    <div class="actions"><button id="upload_cancel" class="icon-btn" style="background:rgba(0,0,0,.08);color:#111">Cancel</button><button id="upload_ok" class="btn">Add to gallery</button></div>`);
+
+  const fileInput=backdrop.querySelector('#file_input');
+  const urlInput=backdrop.querySelector('#url_input');
+  const nameInput=backdrop.querySelector('#img_name');
+
+  backdrop.querySelector('#upload_cancel').addEventListener('click',()=>closeModal(backdrop));
+  backdrop.querySelector('#upload_ok').addEventListener('click',async()=>{
+    if(fileInput.files && fileInput.files[0]){
+      const file=fileInput.files[0];
+      if(!file.type.startsWith('image/')){alert('Choose an image file'); return;}
+      const dataUrl=await readFileAsDataURL(file);
+      pushImage({src:dataUrl,name:nameInput.value||file.name});closeModal(backdrop);renderGallery();return;
+    }
+    const urlVal=urlInput.value.trim();
+    if(urlVal){if(!/^https?:\/\//i.test(urlVal)){alert('Enter valid URL');return;}pushImage({src:urlVal,name:nameInput.value||urlVal.split('/').pop()});closeModal(backdrop);renderGallery();return;}
+    alert('Choose file or paste URL.');
+  });
+}
+
+function sendToWhatsAppDirect(){const msg=document.getElementById('wa_msg').value||'';const phone='919956464545';const url=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;window.open(url,'_blank');}
+function sendToWhatsApp(e){e.preventDefault();sendToWhatsAppDirect();}
+document.getElementById('whatsappBtn').addEventListener('click',sendToWhatsAppDirect);
+
+renderGallery();
+</script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
